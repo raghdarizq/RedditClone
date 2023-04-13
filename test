@@ -1,0 +1,119 @@
+  <main id="page-content">
+    <div id="posts-list">
+      <div id="filter-list" class="box">
+        <div class="filter" onclick="toggleFilter(0)">
+          <i class="fas fa-crown"></i>
+          <p>Best</p>
+        </div>
+        <div class="filter" onclick="toggleFilter(1)">
+          <i class="fas fa-fire"></i>
+          <p>Hot</p>
+        </div>
+        <div class="filter" onclick="toggleFilter(2)">
+          <i class="fas fa-certificate"></i>
+          <p>New</p>
+        </div>
+        <div class="filter" onclick="toggleFilter(3)">
+          <i class="fas fa-trophy"></i>
+          <p>Top</p>
+        </div>
+        <div class="filter" onclick="toggleFilter(4)">
+          <i class="fas fa-chart-line"></i>
+          <p>Rising</p>
+        </div>
+        <div class="filter" onclick="toggleFilter(5)">
+          <i class="fas fa-bullhorn"></i>
+          <p>Controversial</p>
+        </div>
+      </div>
+      <!-- list of posts -->
+    </div>
+
+    <!-- side menu -->
+    <aside id="side-menu">
+      <div id="side-menu-container">
+        <!-- subreddits -->
+        <div id="subreddits-list" class="box">
+          <h2>Current feed</h2>
+          <ul></ul>
+          <div id="subreddit-options" class="button-group">
+            <button class="button" onclick="showFeedName()">Save feed </button>
+            <button class="button" onclick="showCustomFeedList()">Load feed</button>
+            <input id="feed-name" class="input" type="text" placeholder="Enter a feed name">
+          </div>
+        </div>
+
+        <!-- <div class="button-list">
+					<button class="button" onclick="showFeedName()"><i class="fa-solid fa-circle-arrow-down icon"></i> Save</button>
+					<button class="button" onclick="showCustomFeedList()"><i class="fa-solid fa-circle-arrow-up icon"></i> Load</button>
+					<button class="button"><i class="fa-solid fa-sliders icon"></i> Options</button>
+				</div> -->
+
+        <!-- feeds -->
+        <div id="feeds-list" class="box">
+          <ul></ul>
+        </div>
+
+
+        <!-- options -->
+        <div id="options-list" class="box">
+          <h2><!--<button class="button icon"><i class="fa-solid fa-caret-left"></i></button>--> Options</h2>
+          <span>
+            <i class="far fa-eye-slash"></i>
+            <p>Hide sensitive content</p>
+            <label class="switch">
+              <input id="sensitive-content" type="checkbox" onchange="toggleSensitiveContent()">
+              <span class="slider"></span>
+            </label>
+          </span>
+          <span>
+            <i class="fa-solid fa-fire-flame-simple"></i>
+            <p>Blur sensitive content</p>
+            <label class="switch">
+              <input id="sensitive-content-blur" type="checkbox" onchange="toggleSensitiveContentBlur()" checked>
+              <span class="slider"></span>
+            </label>
+          </span>
+          <!--<h2>Account</h2>
+					<div class="button-group">
+						<a href="https://www.reddit.com/api/v1/authorize?response_type=code&client_id=xwiq3LRpjO0ao8RmQcLQaQ&redirect_uri=https%3A%2F%2Fnexilis.netlify.app%2F&scope=identity+mysubreddits&duration=permanent&state=connect" class="button">Connect to Reddit</a>
+					</div>-->
+        </div>
+      </div>
+    </aside>
+
+    <!-- scroll up -->
+    <a id="scroll-up" class="button" onclick="scrollToTop()">
+      <i class="fas fa-rocket"></i>
+      <p>Scroll to top</p>
+    </a>
+
+    <!-- post viewer -->
+    <div id="post-viewer">
+      <div data-feed-id="6" data-post-id="12kko6w" class="post box">
+        <span class="post-header">
+          <img class="subreddit-icon"
+            src="https://a.thumbs.redditmedia.com/xAjpyOrDN62U0ngUr5if9rCG9DqZEMfTQ_GtHDHr930.png" loading="lazy">
+          <p>r/itookapicture · Posted by u/paincookiez 7 hours ago</p>
+
+        </span>
+        <p class="post-title">ITAP of this beautiful mountain in Glencoe, Scotland</p>
+
+        <div class="post-media-container" style="aspect-ratio: 1750 / 2624">
+          <div class="post-media-inner-container">
+            <img class="post-media"
+              src="https://preview.redd.it/jbsrap31tmta1.jpg?auto=webp&amp;v=enabled&amp;s=23064a6d8692a0892d0e59cc35a26b196d39cdf4"
+              width="1750" height="2624" loading="lazy">
+
+          </div>
+        </div>
+        <span class="post-footer">
+          <p title="Likes"><i class="far fa-heart" aria-hidden="true"></i>2k</p>
+          <p title="Comments"><i class="far fa-comment" aria-hidden="true"></i>38</p>
+          <p title="Crossposts"><i class="fas fa-random" aria-hidden="true"></i>2</p>
+
+        </span>
+
+      </div>
+    </div>
+  </main>
