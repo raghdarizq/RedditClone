@@ -1,5 +1,3 @@
-const signUpQuery = require("./singupQuery");
+const signUpQuery = require("./signUpQuery");
 
-module.exports={
-  signUpQuery
-};
+module.exports = signUpQuery;

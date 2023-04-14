@@ -1,4 +1,4 @@
-const singupQuery = require('../../database/query/users');
+const signUpQuery = require('../../database/query/users');
 const { signUpSchema } = require('../../validation/user.schema');
 const bcrypt = require('bcryptjs')
 
@@ -24,7 +24,7 @@ const singupController = (req, res) => {
     return;
   }
   hashed(password, (err, result) => {
-    singupQuery({ username, email, password: result, avatarUser })
+    signUpQuery({ username, email, password: result, avatarUser })
     .then(() => res.status(201).json({
       error: false,
       data: {

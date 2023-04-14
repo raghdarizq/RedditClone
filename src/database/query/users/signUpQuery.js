@@ -1,4 +1,4 @@
-const connection = require('../../config');
+const connection = require('../../config/config');
 
 const signUpQuery = (userData) => {
   const { username, email, password, avatarUser } = userData;

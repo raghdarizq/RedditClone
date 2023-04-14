@@ -1,5 +1,5 @@
 const userRouter = require('express').Router();
-const { singupController } = require("../controller");
+const  singupController  = require("../controller");
 
 userRouter.post('/createUser', singupController);
 
