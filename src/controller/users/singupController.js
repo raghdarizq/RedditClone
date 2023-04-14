@@ -1,4 +1,4 @@
-const singupQuery = require('../../database/query/index'); // h
+const singupQuery = require('../../database/query/users');
 const { signUpSchema } = require('../../validation/user.schema');
 const bcrypt = require('bcryptjs')
 
@@ -35,4 +35,4 @@ const singupController = (req, res) => {
   })
 }
 
-module.exports = {singupController};
+module.exports =  singupController 

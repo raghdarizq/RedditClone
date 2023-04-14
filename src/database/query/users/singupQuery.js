@@ -1,4 +1,4 @@
-const  connection  = require('../../config');
+const connection = require('../../config');
 
 const signUpQuery = (userData) => {
   const { username, email, password, avatarUser } = userData;
@@ -8,7 +8,7 @@ const signUpQuery = (userData) => {
     values: [username, email, password, avatarUser]
   }
 
-  return connection.query(sql)
+  return connection.query(sql);
 };
 
-module.exports = {signUpQuery};
+module.exports = signUpQuery;
