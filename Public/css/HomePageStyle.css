@@ -10,11 +10,12 @@ body {
 
 header {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
   background-color: rgb(25, 25, 25);
   padding: 5px 20px;
 }
+
 .logo-container{
   display: flex;
 }
@@ -30,7 +31,15 @@ header {
   font-weight: bold;
   margin-left: 10px;
 }
+.userInfoHeder{
+  display: flex;
+  align-items: center;
+}
 
+.userHederName{
+  position: relative;
+  right: 10px;
+}
 .input {
   border-radius: 25px;
   background-color: rgb(0, 0, 0);
@@ -39,10 +48,9 @@ header {
   border: none;
   outline: none;
   width: 500px;
-  position:relative;
-  left: 30%;
   color: aliceblue;
 }
+
 .containerPost{
   display: flex;
   flex-direction: column;
@@ -64,10 +72,16 @@ header {
   left: 5px;
   color: rgb(98, 96, 96);
 }
-.userImg{
+.userImg,
+.userHederImg,
+.logout
+{
   height: 40px;
   width: 40px;
   border-radius: 50%;
+}
+.logout{
+  cursor: pointer;
 }
 .imgPost{
   height: 80%;

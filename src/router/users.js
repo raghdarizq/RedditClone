@@ -13,6 +13,10 @@ userRouter.get('/SinInUsers',  (req, res) => {
 
 userRouter.post('/createUser', singupController);
 userRouter.post('/SinInUsers', signInController);
+userRouter.get('/logout', (req, res) => {
+  res.clearCookie('accessToken');
+  res.redirect('/SinInUsers');
+});
 
 
 module.exports = userRouter;

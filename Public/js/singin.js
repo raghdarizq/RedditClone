@@ -16,11 +16,13 @@ form.addEventListener('submit', (e) => {
   }).then((res)=>res.json())
   .then((data) => {
     if (data.message === "Done") {
-      window.location.href = ("/")
+      window.location.href = ("/homePage")
     }
     else if (data.message === "Password  is not correct") {
       wearing.innerHTML = "Password is not correct"
+
     }
     return data;
   })
 })
+

@@ -4,6 +4,9 @@ const path = require('path');
 const userRouter = require('./users')
 
 router.get('/',(req,res)=>{
+  res.sendFile(path.join(__dirname,"..","..","public","html","singinPage.html"))
+})
+router.get('/homePage',(req,res)=>{
   res.sendFile(path.join(__dirname,"..","..","public","html","homePage.html"))
 })
 router.use('/users', userRouter)

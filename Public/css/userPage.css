@@ -1,0 +1,9 @@
+.btn-add{
+  background-color: blueviolet;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin:  10px auto;
+  cursor: pointer;
+  display: flex;
+}
