@@ -7,7 +7,12 @@ const signUpSchema = Joi.object({
   avatarUser: Joi.string().required()
 })
 
+const signInSchema = Joi.object({
+  email:Joi.string().email().required(),
+  password:Joi.string().required()
+})
 
 module.exports = {
-  signUpSchema
+  signUpSchema,
+  signInSchema
 }

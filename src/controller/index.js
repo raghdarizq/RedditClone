@@ -1,3 +1,6 @@
 const singupController = require('./users/singupController');
-
-module.exports= singupController
+const signInController = require('./users/signInController')
+module.exports= {
+  singupController,
+  signInController
+}

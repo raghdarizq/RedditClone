@@ -1,4 +1,4 @@
-const signUpQuery = require('../../database/query/users');
+const {signUpQuery} = require('../../database/query/users');
 const { signUpSchema } = require('../../validation/user.schema');
 const bcrypt = require('bcryptjs')
 

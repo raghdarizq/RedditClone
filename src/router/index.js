@@ -1,12 +1,12 @@
 const router = require('express').Router();
-
-const userRouter = require('./users')
 const path = require('path');
 
+const userRouter = require('./users')
 
-router.use('/users', userRouter)
-router.use("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'public', 'html', 'singupPage.html'))
+router.get('/',(req,res)=>{
+  res.sendFile(path.join(__dirname,"..","..","public","html","homePage.html"))
 })
+router.use('/users', userRouter)
+
 
 module.exports=router;
