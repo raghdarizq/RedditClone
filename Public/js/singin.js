@@ -1,4 +1,3 @@
-// const Swal = window.Swal;
 const form = document.querySelector("form")
 const wearing = document.getElementById("wearing")
 

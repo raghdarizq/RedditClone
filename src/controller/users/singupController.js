@@ -24,7 +24,7 @@ const singupController = (req, res) => {
     return;
   }
   hashed(password, (err, result) => {
-    signUpQuery({ username, email, password: result, avatarUser })
+    signUpQuery({avatarUser, username, email, password: result })
     .then(() => res.status(201).json({
       error: false,
       data: {

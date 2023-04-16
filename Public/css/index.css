@@ -1,0 +1,19 @@
+.btn-group{
+  display: flex;
+  width: 150px;
+  justify-content: space-around
+}
+.btn{
+  background-color: blueviolet;
+  color: aliceblue;
+  padding: 7px;
+  width: 50px;
+  text-align: center;
+  border: blueviolet;
+  border-radius: 5px;
+  
+}
+.btn a{
+  color: aliceblue;
+  text-decoration: none;
+}
