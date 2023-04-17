@@ -57,7 +57,6 @@ fetch("/posts/getUserPost", {
 })
   .then((res) => res.json())
   .then((data) => {
-    console.log(data)
     userNameT.innerHTML = data[0].username;
     userHederImg.src = data[0].avataruser
 

@@ -20,6 +20,8 @@ CREATE TABLE posts (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- CREATE TABLE COMMIT 
+
 -- INSERT INTO users(username, email, password, avatarUser) VALUES ('admin','admin@localhost.com','$2a$10$hcarVj2MRTYH8uKUwavEouyMoozBb35piGNg.ssd3Uv5CNzVIR8xq','https://i.pinimg.com/564x/31/1b/2d/311b2def17cba6b7f05ac1d2ea976786.jpg');
 -- INSERT INTO users(username, email, password, avatarUser) VALUES ('user','user@localhost.com','$2a$10$7T7ral8QCgnm9NM5wmEFxOTy7r9F6TOmvrWFsBAkn5IwSvTdgj6.K', 'https://i.pinimg.com/564x/aa/9a/91/aa9a91a270416d5bb3018f837c02c535.jpg');
 

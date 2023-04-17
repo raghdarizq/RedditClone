@@ -16,9 +16,10 @@ const CreatePostQ = (userData, myToken) => {
   const { content, photo_Post } = userData;
 
   const sql = {
-    text: ` INSERT INTO posts (  content, photo_Post, user_id) VALUES ($1,$2,$3)`,
+    text: `INSERT INTO posts (content, photo_Post, user_id) VALUES ($1, $2, $3)`,
     values: [content, photo_Post, user_id]
   }
+
   return connection.query(sql)
 }
 
