@@ -1,9 +1,9 @@
-const {signUpQuery} = require('./users');
-const {signInQuery} = require('./users')
-const {getAllPostsQuery}= require('./posts')
+const {signUpQuery,signInQuery} = require('./users');
+const {getAllPostsQuery,getUserPostQ}= require('./posts')
 
 module.exports = {
   signUpQuery,
   signInQuery,
-  getAllPostsQuery
+  getAllPostsQuery,
+  getUserPostQ
 }

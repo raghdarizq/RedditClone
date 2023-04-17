@@ -35,19 +35,6 @@ const createPost = (data) => {
     main.appendChild(containerPost);
   }
 }
-
-
-fetch('/posts/getPosts', {
-  method: "GET",
-  headers: {
-    Accept: "application/json text/plain */*",
-    'Content-Type': 'application/json',
-  }
-}).then((res) => (res.json())).then((data) => {
-  createPost(data.data)
-}).catch(error => console.error(error))
-
-
 fetch("/posts/getUserPost", {
   method: "GET",
   headers: {
@@ -57,8 +44,10 @@ fetch("/posts/getUserPost", {
 })
   .then((res) => res.json())
   .then((data) => {
-    console.log(data)
+    createPost(data)
     userNameT.innerHTML = data[0].username;
     userHederImg.src = data[0].avataruser
 
+    console.log(data[0].avataruser)
   })
+

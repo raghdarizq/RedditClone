@@ -5,22 +5,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/logo.png">
   <link rel="stylesheet" href="../css/HomePageStyle.css">
   <title>Zahal</title>
 </head>
 
 <body>
   <header>
-    <a class="logo-container"  href="/">
+    <a class="logo-container" href="/">
       <img class="logo" src="../img/logo.png">
       <h1 class="logo-title">Zahal</h1>
     </a>
-      <input class="input" type="text" placeholder="Search">
-      <div class="userInfoHeder">
-        <h4 class="userHederName">UserName</h4>
-        <img src="https://i.pinimg.com/736x/35/6f/fa/356ffa46c94ae90539f6eb08e90eb886.jpg" alt="" class="userHederImg">
-        <img src="../img/logout.png" alt="" class="logout">
-      </div>
+    <input class="input" type="text" placeholder="Search">
+    <div class="userInfoHeder">
+      <h4 class="userHederName"><a id="userNameT" href="/page/UserPage">UserName</a></h4>
+      <img src="https://i.pinimg.com/736x/35/6f/fa/356ffa46c94ae90539f6eb08e90eb886.jpg" alt="" class="userHederImg">
+      <img src="../img/logout.png" alt="" class="logout">
+    </div>
   </header>
   <!-- page -->
   <main>
@@ -32,9 +33,33 @@
       <div class="PotContent">ITAL of this beautiful mountain in Glencoe, Scotland</div>
       <img src="../img/post.webp" alt="" class="imgPost">
     </div> -->
+    <img id="movingImg" src="../img/add.png" class="addIcon" />
+
   </main>
+  <div class="form-container">
+    <div class="form-content">
+      <span class="close">&times;</span>
+      <form class="form">
+        <div class="form-group">
+          <label for="description">description:</label>
+          <textarea id="description" name="description" rows="5" required class="inputForm"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="photo_website">photo website:</label>
+          <input type="url" id="photo_website" name="photo_website" required class="inputForm">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="Submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 </body>
+<script src="../js/styleScript.js"></script>
+
 <script src="../js/index.js"></script>
 <script src="../js/logout.js"></script>
+
+
 </html>
