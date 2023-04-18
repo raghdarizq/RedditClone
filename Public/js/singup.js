@@ -13,5 +13,5 @@ form.addEventListener('submit', (e) => {
     body: JSON.stringify(data)
   })
     .then(result => result.json())
-    // .then(() => window.location.href = "/Public/html/singinPage.html")
+    // .then(() => window.location.href = "/page/sing")
 })
