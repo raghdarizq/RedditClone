@@ -1,6 +1,4 @@
-const { getAllPostsQuery } = require('./getAllPostsQuery');
-const {getUserPostQ} = require('./getUserPostQ')
-const {CreatePostQ,getPost} = require('./CreatePostQ')
+const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost } = require('./postsQuery');
 
 module.exports = {
   getAllPostsQuery,

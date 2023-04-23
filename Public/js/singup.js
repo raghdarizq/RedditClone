@@ -1,9 +1,9 @@
 
-const form = document.querySelector("form");
+const singupForm = document.querySelector(".singupForm");
 
-form.addEventListener('submit', (e) => {
+singupForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const obj = new FormData(form);
+  const obj = new FormData(singupForm);
   const data = Object.fromEntries(obj);
   fetch('/users/createUser', {
     method: 'POST',
