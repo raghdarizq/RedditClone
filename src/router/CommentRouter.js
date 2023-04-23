@@ -1,5 +1,5 @@
 const CommentRouter = require('express').Router();
-const {createCommentC} = require('../controller')
+const {createCommentC , getCommentC} = require('../controller')
 const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
@@ -19,6 +19,7 @@ const auth = (req, res, next) => {
 }
 
 CommentRouter.post("/createComment", auth, createCommentC)
+CommentRouter.get("/getPostComment", getCommentC)
 
 module.exports = CommentRouter
 

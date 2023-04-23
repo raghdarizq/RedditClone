@@ -1,6 +1,7 @@
-const { createComment, getComment } = require("./commentQuery");
+const { createComment, getComment, getCommentPost } = require("./commentQuery");
 
 module.exports = {
   createComment,
-  getComment
+  getComment,
+  getCommentPost
 }

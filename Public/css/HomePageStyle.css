@@ -58,7 +58,6 @@ header {
   background-color: rgb(25, 25, 25);
   padding: 15px;
   width: 40%;
-  height: 90vh;
   margin: 15px auto;
   border-radius: 30px;
 }
@@ -182,14 +181,67 @@ textarea {
   text-decoration: none;
   color: aliceblue;
 }
-.comments{
-  background-color: rgba(51, 52, 52, 0.5);
-  margin-top: 5px;
-  padding: 5px;
+.comments {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.userCommentsInfo {
+  margin-right: 1rem;
+}
+
+.userImg {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.commentComponent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.commentContent {
+  margin: 0;
+}
+.commentInput {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.commentInput form {
+  display: flex;
+  align-items: center;
   width: 100%;
 }
-.commentComponent{
+
+.commentInput input {
+  flex-grow: 1;
   margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  
+  background-color: rgba(51, 52, 52, 0.5);
+}
+
+.commentInput button {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #dd00ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.inputSpecial{
+  display: none;
 }

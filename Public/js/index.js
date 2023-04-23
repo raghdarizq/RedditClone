@@ -1,6 +1,9 @@
 const main = document.querySelector('main');
 const userNameT = document.getElementById('userNameT')
 const userHederImg = document.querySelector('.userHederImg')
+const userImg = document.querySelector('.userImg')
+
+
 const createPost = (data) => {
   for (let i = 0; i < data.length; i++) {
     const containerPost = document.createElement('div');
@@ -31,10 +34,119 @@ const createPost = (data) => {
     imgPost.alt = '';
     imgPost.classList.add('imgPost');
     containerPost.appendChild(imgPost);
+    /// comments section 
+
+    fetch(`/Comment/getPostComment?post_id=${data[i].id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json text/plain */*",
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => res.json())
+      .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i])
+          const comments = document.createElement('div');
+          comments.classList.add('comments');
+
+          const userCommentsInfo = document.createElement('div');
+          userCommentsInfo.classList.add('userCommentsInfo');
+
+          const userCommentsImg = document.createElement('img');
+          userCommentsImg.setAttribute('src', data[i].avataruser);
+          userCommentsImg.setAttribute('alt', '');
+          userCommentsImg.classList.add('userImg');
+
+          const commentComponent = document.createElement('div');
+          commentComponent.classList.add('commentComponent');
+
+          const commentUserName = document.createElement('p');
+          commentUserName.textContent =  data[i].username;
+          commentUserName.classList.add('userName');
+
+          const commentContent = document.createElement('p');
+          commentContent.textContent =  data[i].content;
+          commentContent.classList.add('commentContent');
+
+          commentComponent.appendChild(commentUserName);
+          commentComponent.appendChild(commentContent);
+
+          userCommentsInfo.appendChild(userCommentsImg);
+
+          comments.appendChild(userCommentsInfo);
+          comments.appendChild(commentComponent);
+          containerPost.appendChild(comments);
+
+        }
+      })
+
+
+    const commentInput = document.createElement('div');
+    commentInput.classList.add('commentInput');
+
+    const form = document.createElement('form');
+    form.classList.add('commentForm')
+
+    const formUserCommentsInfo = document.createElement('div');
+    formUserCommentsInfo.classList.add('userCommentsInfo');
+
+    const formUserCommentsImg = document.createElement('img');
+    formUserCommentsImg.setAttribute('src', '../img/userImg.jpg');
+    formUserCommentsImg.setAttribute('alt', '');
+    formUserCommentsImg.classList.add('userImg');
+
+    const inputComment = document.createElement('input');
+    inputComment.setAttribute('type', 'text');
+    inputComment.setAttribute('name', 'content');
+    inputComment.setAttribute('placeholder', 'Add a comment...');
+
+    const inputCommentId = document.createElement('input');
+    inputCommentId.setAttribute('type', 'number');
+    inputCommentId.setAttribute('value', data[i].id);
+    inputCommentId.setAttribute('name', 'post_id');
+    inputCommentId.classList.add('inputSpecial')
+
+
+    const postButton = document.createElement('button');
+    postButton.setAttribute('type', 'submit');
+
+    postButton.textContent = 'Post';
+
+    formUserCommentsInfo.appendChild(formUserCommentsImg);
+
+    form.appendChild(formUserCommentsInfo);
+    form.appendChild(inputComment);
+    form.appendChild(inputCommentId);
+    form.appendChild(postButton);
+
+    commentInput.appendChild(form);
+
+    containerPost.appendChild(userInfo);
+    containerPost.appendChild(potContent);
+    containerPost.appendChild(imgPost);
+    containerPost.appendChild(commentInput);
 
     main.appendChild(containerPost);
+
   }
+  const commentForms = document.querySelectorAll(".commentForm");
+  commentForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const obj = new FormData(form);
+      const data = Object.fromEntries(obj);
+      fetch("/Comment/createComment", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(result => result.json())
+    })
+  });
+
 }
+
 
 
 fetch('/users/SinInUsers', {
@@ -51,7 +163,10 @@ fetch('/users/SinInUsers', {
     const avataruser = avatarCookie ? decodeURIComponent(avatarCookie.split('=')[1]) : '';
     userNameT.innerHTML = username;
     userHederImg.src = avataruser;
+    userImg.src = avataruser;
+
   })
+
 fetch('/posts/getPosts', {
   method: "GET",
   headers: {
@@ -71,4 +186,5 @@ fetch("/posts/getUserPost", {
   }
 })
   .then((res) => res.json())
+
 

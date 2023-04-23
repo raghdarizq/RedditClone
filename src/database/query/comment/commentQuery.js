@@ -13,10 +13,9 @@ const getComment = (myToken) => {
 };
 
 const createComment = (userData, myToken) => {
-  const user_id = myToken.id;
-  const post_id = myToken.id;
 
-  const { content } = userData;
+  const user_id = myToken.id;
+  const { content, post_id } = userData;
 
   const sql = {
     text: ` INSERT INTO comments (content, user_id, post_id) VALUES ($1,$2,$3)`,
@@ -25,7 +24,20 @@ const createComment = (userData, myToken) => {
   return connection.query(sql)
 }
 
-module.exports={
+const getCommentPost = (post_id) => {
+  const sql = {
+    text: `SELECT comments.id, comments.content, comments.created_at, users.avatarUser, users.username 
+           FROM comments INNER JOIN users ON comments.user_id = users.id 
+           WHERE comments.post_id = $1`,
+    values: [post_id]
+  };
+  return connection.query(sql);
+};
+
+
+
+module.exports = {
   createComment,
-  getComment
+  getComment,
+  getCommentPost
 }
