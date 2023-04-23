@@ -13,8 +13,12 @@ userRouter.get('/SinInUsers',  (req, res) => {
 
 userRouter.post('/createUser', singupController);
 userRouter.post('/SinInUsers', signInController);
+userRouter.get('/SinInUsers', signInController);
+
 userRouter.get('/logout', (req, res) => {
   res.clearCookie('accessToken');
+  res.clearCookie('avataruser');
+  res.clearCookie('username');
   res.redirect('/SinInUsers');
 });
 

@@ -1,4 +1,3 @@
-
 const singupForm = document.querySelector(".singupForm");
 
 singupForm.addEventListener('submit', (e) => {
@@ -12,6 +11,7 @@ singupForm.addEventListener('submit', (e) => {
     },
     body: JSON.stringify(data)
   })
-    .then(result => result.json())
-    // .then(() => window.location.href = "/page/sing")
+    .then(result => {result.json()
+      window.location.href = ('/page/singin')
+    })
 })

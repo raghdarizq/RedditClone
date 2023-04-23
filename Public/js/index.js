@@ -37,6 +37,21 @@ const createPost = (data) => {
 }
 
 
+fetch('/users/SinInUsers', {
+  method: "GET",
+  headers: {
+    Accept: "application/json text/plain */*",
+    'Content-Type': 'application/json',
+  }
+})
+  .then((res) => {
+    res.json()
+    const username = document.cookie.split(';').find(cookie => cookie.startsWith('username=')).split('=')[1];
+    const avatarCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('avataruser='));
+    const avataruser = avatarCookie ? decodeURIComponent(avatarCookie.split('=')[1]) : '';
+    userNameT.innerHTML = username;
+    userHederImg.src = avataruser;
+  })
 fetch('/posts/getPosts', {
   method: "GET",
   headers: {
@@ -56,9 +71,4 @@ fetch("/posts/getUserPost", {
   }
 })
   .then((res) => res.json())
-  .then((data) => {
-    console.log(data)
-    userNameT.innerHTML = data[0].username;
-    userHederImg.src = data[0].avataruser
 
-  })
