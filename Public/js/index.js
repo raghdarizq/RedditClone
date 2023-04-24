@@ -4,7 +4,7 @@ const userHederImg = document.querySelector('.userHederImg')
 const userImg = document.querySelector('.userImg')
 
 
-const createPost = (data) => {
+export const createPost = (data) => {
   for (let i = 0; i < data.length; i++) {
     const containerPost = document.createElement('div');
     containerPost.classList.add('containerPost');
@@ -45,7 +45,6 @@ const createPost = (data) => {
     }).then((res) => res.json())
       .then((data) => {
         for (let i = 0; i < data.length; i++) {
-          console.log(data[i])
           const comments = document.createElement('div');
           comments.classList.add('comments');
 
@@ -61,11 +60,11 @@ const createPost = (data) => {
           commentComponent.classList.add('commentComponent');
 
           const commentUserName = document.createElement('p');
-          commentUserName.textContent =  data[i].username;
+          commentUserName.textContent = data[i].username;
           commentUserName.classList.add('userName');
 
           const commentContent = document.createElement('p');
-          commentContent.textContent =  data[i].content;
+          commentContent.textContent = data[i].content;
           commentContent.classList.add('commentContent');
 
           commentComponent.appendChild(commentUserName);
@@ -162,29 +161,22 @@ fetch('/users/SinInUsers', {
     const avatarCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('avataruser='));
     const avataruser = avatarCookie ? decodeURIComponent(avatarCookie.split('=')[1]) : '';
     userNameT.innerHTML = username;
-    userHederImg.src = avataruser;
-    userImg.src = avataruser;
+    userHederImg?.setAttribute('src', avataruser);
+    userImg?.setAttribute('src', avataruser);
 
   })
 
-fetch('/posts/getPosts', {
-  method: "GET",
-  headers: {
-    Accept: "application/json text/plain */*",
-    'Content-Type': 'application/json',
-  }
-}).then((res) => (res.json())).then((data) => {
-  createPost(data.data)
-}).catch(error => console.error(error))
+export const  getDataFetch=()=>{
+  fetch('/posts/getPosts', {
+    method: "GET",
+    headers: {
+      Accept: "application/json text/plain */*",
+      'Content-Type': 'application/json',
+    }
+  }).then((res) => (res.json()))
+    .then((data) => {
+      createPost(data.data)
+    }).catch(error => console.error(error))
+}
 
-
-fetch("/posts/getUserPost", {
-  method: "GET",
-  headers: {
-    Accept: "application/json text/plain */*",
-    'Content-Type': 'application/json'
-  }
-})
-  .then((res) => res.json())
-
-
+getDataFetch();

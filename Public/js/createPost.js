@@ -9,6 +9,6 @@ formPost.addEventListener('submit',(e)=>{
       'Content-Type': 'application/json'
     },  
     body: JSON.stringify(data)
-  }).then(result => result.json())
+  }).then(result => result.json()).then((data)=>console.log(data))
 })
 
