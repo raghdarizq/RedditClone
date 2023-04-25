@@ -30,6 +30,7 @@ const getAllPostsQuery = () => {
           FROM posts 
           JOIN users ON posts.user_id = users.id
           WHERE deleted_at IS NULL
+          ORDER BY created_at DESC
           `
   }
   return connection.query(sql)
@@ -38,6 +39,7 @@ const getAllPostsQuery = () => {
 const getUserPostQ = (myToken) => {
   const sql = {
     text: `SELECT
+    posts.id,
     posts.content,
     posts.photo_Post,
     users.avatarUser,

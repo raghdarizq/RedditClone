@@ -15,6 +15,9 @@ setInterval(function () {
 let modal = document.querySelector('.form-container');
 let openBtn = document.querySelector('.addIcon');
 let closeBtn = document.querySelector('.close');
+let Submit = document.querySelector('.Submit');
+let inputForm = document.querySelector('.inputForm');
+let inputSrc = document.querySelector('.inputSrc');
 
 openBtn.addEventListener('click', function () {
   modal.style.display = 'block';
@@ -22,6 +25,14 @@ openBtn.addEventListener('click', function () {
 
 closeBtn.addEventListener('click', function () {
   modal.style.display = 'none';
+  inputForm.value=""
+  inputSrc.value=""
+
+});
+Submit.addEventListener('click', function () {
+  modal.style.display = 'none';
+  inputForm.value=""
+  inputSrc.value=""
 });
 
 window.addEventListener('click', function (event) {

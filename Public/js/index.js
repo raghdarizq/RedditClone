@@ -2,9 +2,27 @@ const main = document.querySelector('main');
 const userNameT = document.getElementById('userNameT')
 const userHederImg = document.querySelector('.userHederImg')
 const userImg = document.querySelector('.userImg')
+const formPost = document.querySelector(".form");
 
+formPost.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const obj = new FormData(formPost);
+  const data = Object.fromEntries(obj);
+  fetch("/posts/create", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }).then(result => {
+    result.json()
+    getDataFetch();
+  }
+  )
+})
 
-export const createPost = (data) => {
+const createPost = (data) => {
+  main.innerHTML = ""
   for (let i = 0; i < data.length; i++) {
     const containerPost = document.createElement('div');
     containerPost.classList.add('containerPost');
@@ -21,6 +39,8 @@ export const createPost = (data) => {
     userName.textContent = data[i].username + " " + data[i].created_at;
     userName.classList.add('userName');
     userInfo.appendChild(userName);
+
+
 
     containerPost.appendChild(userInfo);
 
@@ -140,7 +160,9 @@ export const createPost = (data) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      }).then(result => result.json())
+      }).then(result => {
+        result.json()
+      })
     })
   });
 
@@ -166,7 +188,7 @@ fetch('/users/SinInUsers', {
 
   })
 
-export const  getDataFetch=()=>{
+const getDataFetch = () => {
   fetch('/posts/getPosts', {
     method: "GET",
     headers: {

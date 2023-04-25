@@ -22,6 +22,6 @@ const auth = (req, res, next) => {
 PostUsersRouter.get("/getPosts", getAllPostsCon);
 PostUsersRouter.get("/getUserPost", auth, getUserPostCon)
 PostUsersRouter.post("/create", auth, CreatePostC)
-PostUsersRouter.put("/delete/:post_id", deletedPostC)
+PostUsersRouter.put("/delete/:post_id",auth, deletedPostC)
 
 module.exports = PostUsersRouter;
