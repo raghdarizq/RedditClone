@@ -2,6 +2,27 @@ const main2 = document.querySelector("main")
 const userNameT = document.getElementById('userNameT')
 const userHederImg = document.querySelector('.userHederImg')
 const userImg = document.querySelector('.userImg')
+const formPost = document.querySelector(".formPost");
+const content = document.querySelector(".content");
+const img = document.querySelector(".img");
+
+
+formPost.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const obj = new FormData(formPost);
+  const data = Object.fromEntries(obj);
+  fetch("/posts/create", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }).then(result => {
+    result.json()
+    fetchDataUser();
+  }
+  )
+})
 
 const createPostUser = (data) => {
   main2.innerHTML = ''
@@ -28,6 +49,13 @@ const createPostUser = (data) => {
     trash.className = "trash";
     userInfo.appendChild(trash);
 
+
+    const edit = document.createElement("img");
+    edit.src = "../img/edit.png";
+    edit.className = "addIcon";
+    edit.className = "edit";
+    userInfo.appendChild(edit);
+
     containerPost.appendChild(userInfo);
 
     const potContent = document.createElement('div');
@@ -43,6 +71,7 @@ const createPostUser = (data) => {
 
     main2.appendChild(containerPost);
     trash.addEventListener('click', () => {
+
       fetch(`/posts/delete/${data[i].id}`, {
         method: "PUT",
         headers: {
@@ -54,6 +83,20 @@ const createPostUser = (data) => {
           res.json()
           fetchDataUser()
         })
+    });
+    edit.addEventListener('click', () => {
+      content.value=data[i].content;
+      img.value=data[i].photo_post;
+      fetch(`/posts/edit/${data[i].id}`,{
+        method:"PUT",
+        headers: {
+          Accept: "application/json text/plain */*",
+          'Content-Type': 'application/json',
+        }
+      }).then((res) => {
+        res.json()
+        fetchDataUser()
+      })
     });
   }
 

@@ -50,7 +50,9 @@ const getUserPostQ = (myToken) => {
     users.id = posts.user_id
     WHERE users.id = $1
     AND
-    posts.deleted_at IS NULL`,
+    posts.deleted_at IS NULL
+    ORDER BY created_at DESC
+    `,
     values: [myToken.id]
   };
   return connection.query(sql);
@@ -67,7 +69,6 @@ const deletedPostQ = (post_id)=>{
 }
 
 const EditPostQ=(userData,post_id)=>{
-
   const { content, photo_Post } = userData;
   const sql={
     text:`UPDATE posts

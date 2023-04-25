@@ -2,24 +2,7 @@ const main = document.querySelector('main');
 const userNameT = document.getElementById('userNameT')
 const userHederImg = document.querySelector('.userHederImg')
 const userImg = document.querySelector('.userImg')
-const formPost = document.querySelector(".form");
 
-formPost.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const obj = new FormData(formPost);
-  const data = Object.fromEntries(obj);
-  fetch("/posts/create", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  }).then(result => {
-    result.json()
-    getDataFetch();
-  }
-  )
-})
 
 const createPost = (data) => {
   main.innerHTML = ""
@@ -110,7 +93,9 @@ const createPost = (data) => {
     formUserCommentsInfo.classList.add('userCommentsInfo');
 
     const formUserCommentsImg = document.createElement('img');
-    formUserCommentsImg.setAttribute('src', '../img/userImg.jpg');
+    const avatarCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('avataruser='));
+    const avataruser = avatarCookie ? decodeURIComponent(avatarCookie.split('=')[1]) : '';
+    formUserCommentsImg.src=avataruser;
     formUserCommentsImg.setAttribute('alt', '');
     formUserCommentsImg.classList.add('userImg');
 

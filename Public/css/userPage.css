@@ -1,3 +1,18 @@
+.formPost {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgb(25, 25, 25);
+  padding: 15px;
+  width: 40%;
+  margin: 15px auto;
+  border-radius: 30px; 
+}
+.homePage a {
+  color: whitesmoke;
+  text-decoration: none;
+  margin: 0 5px;
+}
 .btn-add{
   background-color: blueviolet;
   color: white;
@@ -14,3 +29,11 @@
   left: 30%;
   cursor: pointer;
 }
+.edit{
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 30%;
+  cursor: pointer;
+}
+
