@@ -1,6 +1,6 @@
 const { singupController, signInController } = require('./users/usersController');
-const { getAllPostsCon, getUserPostCon, CreatePostC } = require('./posts/postsController');
-const { createCommentC ,getCommentC} = require('./comment/commentController');
+const { getAllPostsCon, getUserPostCon, CreatePostC, deletedPostC } = require('./posts/postsController');
+const { createCommentC, getCommentC } = require('./comment/commentController');
 
 module.exports = {
   singupController,
@@ -9,5 +9,6 @@ module.exports = {
   getUserPostCon,
   CreatePostC,
   createCommentC,
-  getCommentC
+  getCommentC,
+  deletedPostC
 }

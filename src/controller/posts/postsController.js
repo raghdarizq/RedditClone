@@ -1,4 +1,4 @@
-const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost } = require('../../database/query')
+const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost,deletedPostQ } = require('../../database/query')
 
 const getAllPostsCon = (req, res) => {
   getAllPostsQuery().then((data) => {
@@ -26,8 +26,19 @@ const CreatePostC = (req, res) => {
     res.status(200).json(result.rows)
   });
 }
+
+const deletedPostC = (req, res) => {
+  const  {post_id}  = req.params;
+  console.log(post_id + " post_id from C");
+  deletedPostQ(post_id).then((result) => {
+    res.status(200).json(result.rows); 
+  });
+};
+
+
 module.exports={
   getAllPostsCon,
   getUserPostCon,
-  CreatePostC
+  CreatePostC,
+  deletedPostC
 }

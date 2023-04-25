@@ -1,4 +1,5 @@
 const connection = require('../../config/config');
+
 const getPost = (myToken) => {
   const sql = {
     text: `select 
@@ -28,6 +29,7 @@ const getAllPostsQuery = () => {
     text: `SELECT posts.id, posts.content, posts.photo_Post, posts.created_at, users.username, users.avatarUser 
           FROM posts 
           JOIN users ON posts.user_id = users.id
+          WHERE deleted_at IS NULL
           `
   }
   return connection.query(sql)
@@ -44,17 +46,28 @@ const getUserPostQ = (myToken) => {
     FROM posts JOIN users 
     ON
     users.id = posts.user_id
-    WHERE users.id = $1`,
+    WHERE users.id = $1
+    AND
+    posts.deleted_at IS NULL`,
     values: [myToken.id]
   };
   return connection.query(sql);
 };
 
+const deletedPostQ = (post_id)=>{
+
+  console.log(post_id+" post_id")
+  const sql ={
+    text:`UPDATE posts SET deleted_at = CURRENT_TIMESTAMP WHERE id = $1`,
+    values:[post_id]
+  };
+  return connection.query(sql);
+}
 
 module.exports = {
   CreatePostQ,
   getPost,
   getAllPostsQuery,
-  getUserPostQ
-
+  getUserPostQ,
+  deletedPostQ
 };

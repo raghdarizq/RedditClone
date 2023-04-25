@@ -1,5 +1,5 @@
 const { signUpQuery, signInQuery } = require('./users');
-const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost } = require('./posts')
+const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost ,deletedPostQ } = require('./posts')
 const { createComment, getComment, getCommentPost } = require('./comment')
 module.exports = {
   signUpQuery,
@@ -10,5 +10,6 @@ module.exports = {
   getPost,
   createComment,
   getComment,
-  getCommentPost
+  getCommentPost,
+  deletedPostQ
 }
