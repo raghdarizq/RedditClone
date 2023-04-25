@@ -168,8 +168,6 @@ const createPost = (data) => {
 
 }
 
-
-
 fetch('/users/SinInUsers', {
   method: "GET",
   headers: {

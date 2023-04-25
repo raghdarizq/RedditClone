@@ -1,6 +1,6 @@
 const PostUsersRouter = require('express').Router();
 const jwt = require("jsonwebtoken");
-const { getAllPostsCon, getUserPostCon ,CreatePostC,deletedPostC} = require('../controller');
+const { getAllPostsCon, getUserPostCon ,CreatePostC,deletedPostC,EditPostC} = require('../controller');
 
 
 const auth = (req, res, next) => {
@@ -23,5 +23,6 @@ PostUsersRouter.get("/getPosts", getAllPostsCon);
 PostUsersRouter.get("/getUserPost", auth, getUserPostCon)
 PostUsersRouter.post("/create", auth, CreatePostC)
 PostUsersRouter.put("/delete/:post_id",auth, deletedPostC)
+PostUsersRouter.put("/edit/:post_id", EditPostC)
 
 module.exports = PostUsersRouter;

@@ -1,5 +1,5 @@
 const { singupController, signInController } = require('./users/usersController');
-const { getAllPostsCon, getUserPostCon, CreatePostC, deletedPostC } = require('./posts/postsController');
+const { getAllPostsCon, getUserPostCon, CreatePostC, deletedPostC,EditPostC } = require('./posts/postsController');
 const { createCommentC, getCommentC } = require('./comment/commentController');
 
 module.exports = {
@@ -10,5 +10,6 @@ module.exports = {
   CreatePostC,
   createCommentC,
   getCommentC,
-  deletedPostC
+  deletedPostC,
+  EditPostC
 }

@@ -1,9 +1,10 @@
-const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost ,deletedPostQ } = require('./postsQuery');
+const { getAllPostsQuery, getUserPostQ, CreatePostQ, getPost ,deletedPostQ ,EditPostQ} = require('./postsQuery');
 
 module.exports = {
   getAllPostsQuery,
   getUserPostQ,
   CreatePostQ,
   getPost,
-  deletedPostQ
+  deletedPostQ,
+  EditPostQ
 }

@@ -58,18 +58,32 @@ const getUserPostQ = (myToken) => {
 
 const deletedPostQ = (post_id)=>{
 
-  console.log(post_id+" post_id")
   const sql ={
     text:`UPDATE posts SET deleted_at = CURRENT_TIMESTAMP WHERE id = $1`,
     values:[post_id]
   };
   return connection.query(sql);
+
 }
+
+const EditPostQ=(userData,post_id)=>{
+
+  const { content, photo_Post } = userData;
+  const sql={
+    text:`UPDATE posts
+      SET content = $1, photo_Post =$2
+      WHERE id = $3`,
+      values:[content,photo_Post,post_id]
+  }
+  return connection.query(sql);
+}
+
 
 module.exports = {
   CreatePostQ,
   getPost,
   getAllPostsQuery,
   getUserPostQ,
-  deletedPostQ
+  deletedPostQ,
+  EditPostQ
 };
