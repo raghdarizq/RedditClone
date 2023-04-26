@@ -73,7 +73,7 @@ const EditPostQ=(userData,post_id)=>{
   const sql={
     text:`UPDATE posts
       SET content = $1, photo_Post =$2
-      WHERE id = $3`,
+      WHERE id = 6`,
       values:[content,photo_Post,post_id]
   }
   return connection.query(sql);

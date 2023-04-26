@@ -5,24 +5,48 @@ const userImg = document.querySelector('.userImg')
 const formPost = document.querySelector(".formPost");
 const content = document.querySelector(".content");
 const img = document.querySelector(".img");
+let EditMood = false;
+
+const EditDataFetch = (data) => {
+  // console.log(data + "from editFetch Data ")
+  
+  fetch(`/posts/edit/${data}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json text/plain */*",
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }).then((res) => {
+    res.json()
+    fetchDataUser()
+  })
+};
 
 
 formPost.addEventListener('submit', (e) => {
   e.preventDefault();
   const obj = new FormData(formPost);
   const data = Object.fromEntries(obj);
-  fetch("/posts/create", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  }).then(result => {
-    result.json()
-    fetchDataUser();
+  if (EditMood === false) {
+    fetch("/posts/create", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(result => {
+      result.json()
+      fetchDataUser();
+    }
+    )
   }
-  )
+  else {
+    console.log(data)
+    EditDataFetch(data)
+  }
 })
+
 
 const createPostUser = (data) => {
   main2.innerHTML = ''
@@ -85,18 +109,11 @@ const createPostUser = (data) => {
         })
     });
     edit.addEventListener('click', () => {
-      content.value=data[i].content;
-      img.value=data[i].photo_post;
-      fetch(`/posts/edit/${data[i].id}`,{
-        method:"PUT",
-        headers: {
-          Accept: "application/json text/plain */*",
-          'Content-Type': 'application/json',
-        }
-      }).then((res) => {
-        res.json()
-        fetchDataUser()
-      })
+      content.value = data[i].content;
+      img.value = data[i].photo_post;
+      EditMood = true;
+      console.log(data[i].id + " data i from add eventL")
+      EditDataFetch(data[i].id);
     });
   }
 
@@ -120,16 +137,16 @@ fetch('/users/SinInUsers', {
 
   })
 
-  const fetchDataUser = ()=>{
-    
-    fetch("/posts/getUserPost", {
-      method: "GET",
-      headers: {
-        Accept: "application/json text/plain */*",
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => (createPostUser(data)))
-  }
-  fetchDataUser()
+const fetchDataUser = () => {
+
+  fetch("/posts/getUserPost", {
+    method: "GET",
+    headers: {
+      Accept: "application/json text/plain */*",
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => (createPostUser(data)))
+}
+fetchDataUser()
