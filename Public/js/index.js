@@ -39,6 +39,7 @@ const createPost = (data) => {
     containerPost.appendChild(imgPost);
     /// comments section 
 
+  const Fetchcomment=()=>{
     fetch(`/Comment/getPostComment?post_id=${data[i].id}`, {
       method: "GET",
       headers: {
@@ -81,6 +82,8 @@ const createPost = (data) => {
 
         }
       })
+  }
+  Fetchcomment()
 
 
     const commentInput = document.createElement('div');
