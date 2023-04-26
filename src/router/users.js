@@ -5,10 +5,10 @@ const path = require('path');
 
 
 userRouter.get('/createUser',  (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'public', 'html', 'singupPage.html'))
+  res.sendFile(path.join(__dirname, '..', '..', 'Public', 'html', 'singupPage.html'))
 });
 userRouter.get('/SinInUsers',  (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'public', 'html', 'singinPage.html'))
+  res.sendFile(path.join(__dirname, '..', '..', 'Public', 'html', 'singinPage.html'))
 });
 
 userRouter.post('/createUser', singupController);

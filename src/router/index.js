@@ -7,7 +7,7 @@ const PageRouter = require('./PageRouter')
 const CommentRouter = require('./CommentRouter')
 
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "..", "public", "index.html"))
+  res.sendFile(path.join(__dirname, "..", "..", "Public", "index.html"))
 })
 
 router.use('/page',PageRouter)
