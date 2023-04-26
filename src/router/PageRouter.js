@@ -9,7 +9,7 @@ PageRouter.get('/UserPage', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "Public", "html", "userPage.html"))
 })
 PageRouter.get('/singin', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "..", "Public", "html", "singupPage.html"))
+  res.sendFile(path.join(__dirname, "..", "..", "Public", "html", "singinPage.html"))
 })
 PageRouter.get('/singup', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "Public", "html", "singupPage.html"))
