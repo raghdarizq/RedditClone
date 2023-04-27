@@ -39,51 +39,51 @@ const createPost = (data) => {
     containerPost.appendChild(imgPost);
     /// comments section 
 
-  const Fetchcomment=()=>{
-    fetch(`/Comment/getPostComment?post_id=${data[i].id}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json text/plain */*",
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => res.json())
-      .then((data) => {
-        for (let i = 0; i < data.length; i++) {
-          const comments = document.createElement('div');
-          comments.classList.add('comments');
-
-          const userCommentsInfo = document.createElement('div');
-          userCommentsInfo.classList.add('userCommentsInfo');
-
-          const userCommentsImg = document.createElement('img');
-          userCommentsImg.setAttribute('src', data[i].avataruser);
-          userCommentsImg.setAttribute('alt', '');
-          userCommentsImg.classList.add('userImg');
-
-          const commentComponent = document.createElement('div');
-          commentComponent.classList.add('commentComponent');
-
-          const commentUserName = document.createElement('p');
-          commentUserName.textContent = data[i].username;
-          commentUserName.classList.add('userName');
-
-          const commentContent = document.createElement('p');
-          commentContent.textContent = data[i].content;
-          commentContent.classList.add('commentContent');
-
-          commentComponent.appendChild(commentUserName);
-          commentComponent.appendChild(commentContent);
-
-          userCommentsInfo.appendChild(userCommentsImg);
-
-          comments.appendChild(userCommentsInfo);
-          comments.appendChild(commentComponent);
-          containerPost.appendChild(comments);
-
+    const Fetchcomment = () => {
+      fetch(`/Comment/getPostComment?post_id=${data[i].id}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json text/plain */*",
+          'Content-Type': 'application/json'
         }
-      })
-  }
-  Fetchcomment()
+      }).then((res) => res.json())
+        .then((data) => {
+          for (let i = 0; i < data.length; i++) {
+            const comments = document.createElement('div');
+            comments.classList.add('comments');
+
+            const userCommentsInfo = document.createElement('div');
+            userCommentsInfo.classList.add('userCommentsInfo');
+
+            const userCommentsImg = document.createElement('img');
+            userCommentsImg.setAttribute('src', data[i].avataruser);
+            userCommentsImg.setAttribute('alt', '');
+            userCommentsImg.classList.add('userImg');
+
+            const commentComponent = document.createElement('div');
+            commentComponent.classList.add('commentComponent');
+
+            const commentUserName = document.createElement('p');
+            commentUserName.textContent = data[i].username;
+            commentUserName.classList.add('userName');
+
+            const commentContent = document.createElement('p');
+            commentContent.textContent = data[i].content;
+            commentContent.classList.add('commentContent');
+
+            commentComponent.appendChild(commentUserName);
+            commentComponent.appendChild(commentContent);
+
+            userCommentsInfo.appendChild(userCommentsImg);
+
+            comments.appendChild(userCommentsInfo);
+            comments.appendChild(commentComponent);
+            containerPost.appendChild(comments);
+
+          }
+        })
+    }
+    Fetchcomment()
 
 
     const commentInput = document.createElement('div');
@@ -98,7 +98,7 @@ const createPost = (data) => {
     const formUserCommentsImg = document.createElement('img');
     const avatarCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('avataruser='));
     const avataruser = avatarCookie ? decodeURIComponent(avatarCookie.split('=')[1]) : '';
-    formUserCommentsImg.src=avataruser;
+    formUserCommentsImg.src = avataruser;
     formUserCommentsImg.setAttribute('alt', '');
     formUserCommentsImg.classList.add('userImg');
 

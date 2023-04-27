@@ -5,7 +5,7 @@ const userImg = document.querySelector('.userImg')
 const formPost = document.querySelector(".formPost");
 const content = document.querySelector(".content");
 const img = document.querySelector(".img");
-
+const inputForm = document.querySelector(".inputForm")
 
 formPost.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -22,6 +22,8 @@ formPost.addEventListener('submit', (e) => {
     fetchDataUser();
   }
   )
+  inputForm.value = " "
+  img.value = " "
 })
 
 const createPostUser = (data) => {
@@ -85,10 +87,10 @@ const createPostUser = (data) => {
         })
     });
     edit.addEventListener('click', () => {
-      content.value=data[i].content;
-      img.value=data[i].photo_post;
-      fetch(`/posts/edit/${data[i].id}`,{
-        method:"PUT",
+      content.value = data[i].content;
+      img.value = data[i].photo_post;
+      fetch(`/posts/edit/${data[i].id}`, {
+        method: "PUT",
         headers: {
           Accept: "application/json text/plain */*",
           'Content-Type': 'application/json',
@@ -120,16 +122,16 @@ fetch('/users/SinInUsers', {
 
   })
 
-  const fetchDataUser = ()=>{
-    
-    fetch("/posts/getUserPost", {
-      method: "GET",
-      headers: {
-        Accept: "application/json text/plain */*",
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => (createPostUser(data)))
-  }
-  fetchDataUser()
+const fetchDataUser = () => {
+
+  fetch("/posts/getUserPost", {
+    method: "GET",
+    headers: {
+      Accept: "application/json text/plain */*",
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => (createPostUser(data)))
+}
+fetchDataUser()
