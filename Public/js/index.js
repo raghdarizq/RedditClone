@@ -1,7 +1,7 @@
 const main = document.querySelector('main');
-const userNameT = document.getElementById('userNameT')
-const userHederImg = document.querySelector('.userHederImg')
-const userImg = document.querySelector('.userImg')
+const userNameT = document.getElementById('userNameT');
+const userHederImg = document.querySelector('.userHederImg');
+const userImg = document.querySelector('.userImg');
 
 
 const createPost = (data) => {
@@ -85,7 +85,6 @@ const createPost = (data) => {
     }
     Fetchcomment()
 
-
     const commentInput = document.createElement('div');
     commentInput.classList.add('commentInput');
 
@@ -134,25 +133,27 @@ const createPost = (data) => {
     containerPost.appendChild(commentInput);
 
     main.appendChild(containerPost);
+    const commentForms = document.querySelectorAll(".commentForm");
+    commentForms.forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const obj = new FormData(form);
+        const data = Object.fromEntries(obj);
+        fetch("/Comment/createComment", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(result => {
+          result.json()
+          // Fetchcomment()
+        })
+      })
+    });
 
   }
-  const commentForms = document.querySelectorAll(".commentForm");
-  commentForms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const obj = new FormData(form);
-      const data = Object.fromEntries(obj);
-      fetch("/Comment/createComment", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }).then(result => {
-        result.json()
-      })
-    })
-  });
+
 
 }
 
